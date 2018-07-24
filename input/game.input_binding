@@ -1,0 +1,8 @@
+key_trigger {
+  input: KEY_A
+  action: "mouse_left_click"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_1
+  action: "mouse_left_click"
+}
