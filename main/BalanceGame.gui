@@ -5,27 +5,27 @@ fonts {
 }
 textures {
   name: "BtnDecreasePrice"
-  texture: "/Graphics/Atlases/BtnDecreasePrice.atlas"
+  texture: "/Graphics/Atlases/Game/BtnDecreasePrice.atlas"
 }
 textures {
   name: "BtnIncreasePrice"
-  texture: "/Graphics/Atlases/BtnIncreasePrice.atlas"
+  texture: "/Graphics/Atlases/Game/BtnIncreasePrice.atlas"
 }
 textures {
   name: "MainBackground"
-  texture: "/Graphics/Atlases/MainBackground.atlas"
+  texture: "/Graphics/Atlases/Game/MainBackground.atlas"
 }
 textures {
   name: "Bar"
-  texture: "/Graphics/Atlases/Bar.atlas"
+  texture: "/Graphics/Atlases/Game/Bar.atlas"
 }
 textures {
   name: "LoseScreen"
-  texture: "/Graphics/Atlases/LoseScreen.atlas"
+  texture: "/Graphics/Atlases/Game/LoseScreen.atlas"
 }
 textures {
   name: "DarthVadar"
-  texture: "/Graphics/Atlases/DarthVadar.atlas"
+  texture: "/Graphics/Atlases/Game/DarthVadar.atlas"
 }
 background_color {
   x: 0.0

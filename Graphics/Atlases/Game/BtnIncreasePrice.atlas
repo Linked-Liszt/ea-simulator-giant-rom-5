@@ -13,8 +13,8 @@ animations {
   images {
     image: "/Graphics/images/Buttons/IncreasePricePress.png"
   }
-  playback: PLAYBACK_LOOP_FORWARD
-  fps: 60
+  playback: PLAYBACK_NONE
+  fps: 0
   flip_horizontal: 0
   flip_vertical: 0
 }

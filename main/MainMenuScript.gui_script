@@ -1,0 +1,97 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	Background = gui.get_node("Background")
+	PlayIcon = gui.get_node("PlayIcon")
+	CreditsIcon = gui.get_node("CreditsIcon")
+
+	PlayState = false
+	CreditState = false
+
+	DblClkFrameCounter = 0
+	ClickIcon1 = -1
+	ClickIcon2 = -2
+	DclickStart = false
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	if DclickStart then
+		DblClkFrameCounter = DblClkFrameCounter + 1
+	end
+
+	if DblClkFrameCounter > 60 then
+		ClickIcon1 = -1
+		ClickIcon2 = -2
+		DblClkFrameCounter = 0
+		DclickStart = false
+	end
+	
+	if ClickIcon1 == ClickIcon2 then
+		print("Clicked Icon: " .. tostring(ClickIcon2))
+		--Trigger Reset
+		DblClkFrameCounter = 61
+	end
+	
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("mouse_left_click") then
+		-- Get the nodes and see if we have pressed any.
+		local x = action.x
+		local y = action.y
+		if action.pressed then
+			if gui.pick_node(PlayIcon, x, y) then
+				gui.play_flipbook(CreditsIcon, "Base")
+				CreditState=false
+				gui.play_flipbook(PlayIcon, "Click")
+				PlayState=true
+
+				--Double CLick
+				DclickStart = true
+				ClickIcon2 = ClickIcon1
+				ClickIcon1 = 1	
+			elseif gui.pick_node(CreditsIcon, x, y) then
+				gui.play_flipbook(PlayIcon, "Base")
+				PlayState=false
+				gui.play_flipbook(CreditsIcon, "Click")
+				CreditState=true
+
+				--Double Click
+				DclickStart = true
+				ClickIcon2 = ClickIcon1
+				ClickIcon1 = 2
+				
+			elseif gui.pick_node(Background, x, y) then
+				gui.play_flipbook(PlayIcon, "Base")
+				gui.play_flipbook(CreditsIcon, "Base")
+				PlayState=false
+				CreditState=false
+			end
+		end
+		if action.released then
+			if PlayState then
+				gui.play_flipbook(PlayIcon, "B_Click")
+			end	
+			if CreditState then
+				gui.play_flipbook(CreditsIcon, "B_Click")
+			end
+		end
+
+	end
+	
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end

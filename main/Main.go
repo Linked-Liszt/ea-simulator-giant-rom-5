@@ -1,6 +1,6 @@
 components {
-  id: "BalanceGame"
-  component: "/main/BalanceGame.gui"
+  id: "MainMenu"
+  component: "/main/MainMenu.gui"
   position {
     x: 0.0
     y: 0.0
