@@ -1,0 +1,306 @@
+animations {
+  id: "Bar0"
+  images {
+    image: "/Graphics/images/Bar/Bar0.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar1"
+  images {
+    image: "/Graphics/images/Bar/Bar1.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar2"
+  images {
+    image: "/Graphics/images/Bar/Bar2.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar3"
+  images {
+    image: "/Graphics/images/Bar/Bar3.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar4"
+  images {
+    image: "/Graphics/images/Bar/Bar4.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar5"
+  images {
+    image: "/Graphics/images/Bar/Bar5.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar6"
+  images {
+    image: "/Graphics/images/Bar/Bar6.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar7"
+  images {
+    image: "/Graphics/images/Bar/Bar7.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar8"
+  images {
+    image: "/Graphics/images/Bar/Bar8.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar9"
+  images {
+    image: "/Graphics/images/Bar/Bar9.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar10"
+  images {
+    image: "/Graphics/images/Bar/Bar10.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar11"
+  images {
+    image: "/Graphics/images/Bar/Bar11.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar12"
+  images {
+    image: "/Graphics/images/Bar/Bar12.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar13"
+  images {
+    image: "/Graphics/images/Bar/Bar13.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar14"
+  images {
+    image: "/Graphics/images/Bar/Bar14.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar15"
+  images {
+    image: "/Graphics/images/Bar/Bar15.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar16"
+  images {
+    image: "/Graphics/images/Bar/Bar16.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar17"
+  images {
+    image: "/Graphics/images/Bar/Bar17.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar18"
+  images {
+    image: "/Graphics/images/Bar/Bar18.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar19"
+  images {
+    image: "/Graphics/images/Bar/Bar19.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar20"
+  images {
+    image: "/Graphics/images/Bar/Bar20.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar21"
+  images {
+    image: "/Graphics/images/Bar/Bar21.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar22"
+  images {
+    image: "/Graphics/images/Bar/Bar22.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar23"
+  images {
+    image: "/Graphics/images/Bar/Bar23.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar24"
+  images {
+    image: "/Graphics/images/Bar/Bar24.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar25"
+  images {
+    image: "/Graphics/images/Bar/Bar25.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar26"
+  images {
+    image: "/Graphics/images/Bar/Bar26.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar27"
+  images {
+    image: "/Graphics/images/Bar/Bar27.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Bar28"
+  images {
+    image: "/Graphics/images/Bar/Bar28.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "BarRed"
+  images {
+    image: "/Graphics/images/Bar/BarRed.png"
+  }
+  images {
+    image: "/Graphics/images/Bar/Bar29.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
