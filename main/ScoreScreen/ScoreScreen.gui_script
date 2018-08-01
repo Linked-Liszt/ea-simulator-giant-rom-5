@@ -1,0 +1,42 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	print("imrunning")
+	OKButton = gui.get_node("OkButton")
+	ScoreText = gui.get_node("ScoreText")
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("UpdateScoreScreen") then
+		gui.set_text(ScoreText, "$" .. message.Score)
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("mouse_left_click") then
+		-- Get the nodes and see if we have pressed any.
+		local x = action.x
+		local y = action.y
+		if action.pressed then
+			if gui.pick_node(OKButton, x, y) then
+				gui.play_flipbook(OKButton, "Press")
+			end
+		end
+		if action.released then
+			gui.play_flipbook(OKButton, "Base")
+			if gui.pick_node(OKButton, x, y) then
+				msg.post("#ScoreScreenActions", "DeleteScoreScreen")
+			end
+		end
+
+	end
+end

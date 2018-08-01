@@ -1,7 +1,7 @@
 name: "main"
 instances {
-  id: "Main"
-  prototype: "/main/Main.go"
+  id: "MainMenu"
+  prototype: "/main/MainMenu/MainMenu.go"
   position {
     x: 0.0
     y: 0.0
