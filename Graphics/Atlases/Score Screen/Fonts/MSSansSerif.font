@@ -1,4 +1,4 @@
-font: "/Graphics/Fonts/micross.ttf"
+font: "/Graphics/Atlases/Score Screen/Fonts/micross.ttf"
 material: "/builtins/fonts/font.material"
 size: 25
 antialias: 0

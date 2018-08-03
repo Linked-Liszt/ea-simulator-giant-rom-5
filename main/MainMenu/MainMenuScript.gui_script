@@ -48,10 +48,11 @@ function update(self, dt)
 	
 	if ClickIcon1 == ClickIcon2 then
 		if ClickIcon1 == 1 then
-			local FactoryName= "#MainGameFactory"
+			local FactoryName = "#MainGameFactory"
 			factory.create(FactoryName)
 		elseif ClickIcon1 == 2 then
-
+			local FactoryName = "#IntroFactory"
+			factory.create(FactoryName)
 		end
 		--Trigger Reset
 		DblClkFrameCounter = 61

@@ -1,6 +1,25 @@
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
+	msg.post(".", "acquire_input_focus")
+	
+	OkButton = gui.get_node("OkButton")
+	SkipButton = gui.get_node("SkipButton")
+	TutText = gui.get_node("TutorialText")
+
+	StringCounter = 0
+	CharCounter  = -1
+	OKClick = true
+	
+	TutorialLines = {
+		"Welcome to Electronic Arts and congrats on becoming our new CEO.",
+		"As you probably know, we\'ve recently released our new hit game\nStar Wars Battlefront 2.",
+		"Fortunately the company mostly runs itself. However, you\nhave one very important job.",
+		"Here\'s the tool we\'ve built to manage our most important\nskin in Battlefront 2.",
+		"We use advanced algorithms and telemetry systems to track\nthe outrage levels of both the public and our investors.",
+		"Use the increase and decrease price buttons hooked directly\ninto our servers to keep people happy.",
+		"If either party gets too unhappy we\'ll be forced to let you go.",
+		"The longer you can keep people happy and the higher the\nskin price, the more we can compensate you. ",
+		"By the way just so we make sure our papers are straight, what was\nyour name again?"
+	}
 end
 
 function final(self)
@@ -9,8 +28,25 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
+
+	if OKClick and CharCounter == -1 then
+		CharCounter = 1
+		StringCounter = StringCounter + 1
+	end
+	if StringCounter > table.maxn(TutorialLines) then
+		CharCounter=-1
+		print("TODO BEGIN GAME")
+		OKClick = false 
+	end
+	if CharCounter > -1 then
+		if CharCounter <= string.len(TutorialLines[StringCounter]) then
+			gui.set_text(TutText,  string.sub(TutorialLines[StringCounter], 0, CharCounter))
+			CharCounter = CharCounter + 1
+		else
+			CharCounter = -1
+		end
+	end
+	OKClick = false 
 end
 
 function on_message(self, message_id, message, sender)
@@ -19,8 +55,31 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
+	if action_id == hash("mouse_left_click") then
+		-- Get the nodes and see if we have pressed any.
+		local x = action.x
+		local y = action.y
+		if action.pressed then
+			if gui.pick_node(OkButton, x, y) then
+				gui.play_flipbook(OkButton, "Press")
+			end
+			if gui.pick_node(SkipButton, x, y) then
+				gui.play_flipbook(SkipButton, "Press")
+			end
+		end
+		if action.released then
+			gui.play_flipbook(OkButton, "Base")
+			gui.play_flipbook(SkipButton, "Base")
+			if gui.pick_node(OkButton, x, y) then
+				OKClick = true
+			end
+			if gui.pick_node(SkipButton, x, y) then
+				StringCounter = table.maxn(TutorialLines) + 1
+				OKClick = true
+			end
+		end
+	end
+	
 end
 
 function on_reload(self)

@@ -1,7 +1,7 @@
 script: "/main/ScoreScreen/ScoreScreen.gui_script"
 fonts {
   name: "MSSansSerif"
-  font: "/Graphics/Fonts/MSSansSerif.font"
+  font: "/Graphics/Atlases/Score Screen/Fonts/MSSansSerif.font"
 }
 textures {
   name: "ScoreScreenBackground"
@@ -9,7 +9,7 @@ textures {
 }
 textures {
   name: "OkButton"
-  texture: "/Graphics/Atlases/Score Screen/OkButton.atlas"
+  texture: "/Graphics/Atlases/Global/OkButton.atlas"
 }
 background_color {
   x: 0.0

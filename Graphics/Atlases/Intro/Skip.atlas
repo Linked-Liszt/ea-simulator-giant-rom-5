@@ -1,0 +1,23 @@
+animations {
+  id: "Base"
+  images {
+    image: "/Graphics/images/Buttons/SkipButton.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Press"
+  images {
+    image: "/Graphics/images/Buttons/SkipButtonPress.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

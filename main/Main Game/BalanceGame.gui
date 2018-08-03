@@ -1,7 +1,7 @@
 script: "/main/Main Game/BalanceGame.gui_script"
 fonts {
   name: "MSSansSerif"
-  font: "/Graphics/Fonts/MSSansSerif.font"
+  font: "/Graphics/Atlases/Score Screen/Fonts/MSSansSerif.font"
 }
 textures {
   name: "BtnDecreasePrice"
