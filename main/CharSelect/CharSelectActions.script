@@ -9,7 +9,7 @@ function final(self)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("DeleteIntro") then
+	if message_id == hash("DeleteCharSelect") then
 		go.delete()
 	end
 end

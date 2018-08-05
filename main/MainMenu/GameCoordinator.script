@@ -1,0 +1,35 @@
+function init(self)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("StartMainGame") then
+
+		msg.post(msg.url(ScoreScreen), "UpdateScoreScreen", {Score=Score})
+		local FactoryName = "#MainGameFactory"
+		local GameInstance = factory.create(FactoryName)
+		msg.post(msg.url(GameInstance), "GameSettings", message)
+		
+	elseif message_id == hash("StartIntro") then
+		local FactoryName = "#IntroFactory"
+		factory.create(FactoryName)
+		
+	elseif message_id == hash("StartCharSelect") then
+		local FactoryName = "#CharSelectFactory"
+		factory.create(FactoryName)
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

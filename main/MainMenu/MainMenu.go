@@ -13,6 +13,21 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "GameCoordinator"
+  component: "/main/MainMenu/GameCoordinator.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "MainGameFactory"
   type: "factory"
@@ -35,6 +50,24 @@ embedded_components {
   id: "IntroFactory"
   type: "factory"
   data: "prototype: \"/main/Intro/Intro.go\"\n"
+  "load_dynamically: true\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "CharSelectFactory"
+  type: "factory"
+  data: "prototype: \"/main/CharSelect/CharSelect.go\"\n"
   "load_dynamically: true\n"
   ""
   position {

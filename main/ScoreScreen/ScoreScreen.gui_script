@@ -1,6 +1,5 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	print("imrunning")
 	OKButton = gui.get_node("OkButton")
 	ScoreText = gui.get_node("ScoreText")
 end

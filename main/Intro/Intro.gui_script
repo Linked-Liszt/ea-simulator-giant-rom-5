@@ -28,15 +28,19 @@ function final(self)
 end
 
 function update(self, dt)
-
+	if StringCounter == 4 then
+		gui.play_flipbook(gui.get_node("Background"), "GameBackground")
+	end
 	if OKClick and CharCounter == -1 then
 		CharCounter = 1
 		StringCounter = StringCounter + 1
 	end
 	if StringCounter > table.maxn(TutorialLines) then
 		CharCounter=-1
-		print("TODO BEGIN GAME")
-		OKClick = false 
+		OKClick = false
+		msg.post("main:/MainMenu#GameCoordinator", "StartCharSelect")
+		msg.post("#IntoActions", "DeleteIntro")
+		
 	end
 	if CharCounter > -1 then
 		if CharCounter <= string.len(TutorialLines[StringCounter]) then

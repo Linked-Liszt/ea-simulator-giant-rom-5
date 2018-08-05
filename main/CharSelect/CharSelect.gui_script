@@ -1,0 +1,67 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	
+	SelectJeff = gui.get_node("SelectJeff")
+	SelectDan = gui.get_node("SelectDan")
+	SelectAlex = gui.get_node("SelectAlex")
+	SelectMill = gui.get_node("SelectMill")
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("mouse_left_click") then
+		-- Get the nodes and see if we have pressed any.
+		local x = action.x
+		local y = action.y
+		if action.pressed then
+			if gui.pick_node(SelectJeff, x, y) then
+				gui.play_flipbook(SelectJeff, "Press")
+			elseif gui.pick_node(SelectDan, x, y) then
+				gui.play_flipbook(SelectDan, "Press")
+			elseif gui.pick_node(SelectAlex, x, y) then
+				gui.play_flipbook(SelectAlex, "Press")
+			elseif gui.pick_node(SelectMill, x, y) then
+				gui.play_flipbook(SelectMill, "Press")
+			end
+		end
+		if action.released then
+			gui.play_flipbook(SelectJeff, "Base")
+			gui.play_flipbook(SelectDan, "Base")
+			gui.play_flipbook(SelectAlex, "Base")
+			gui.play_flipbook(SelectMill, "Base")
+			if gui.pick_node(SelectJeff, x, y) then
+				msg.post("main:/MainMenu#GameCoordinator", "StartMainGame", {0})
+				msg.post("#CharSelectActions", "DeleteCharSelect")
+			elseif gui.pick_node(SelectDan, x, y) then
+				msg.post("main:/MainMenu#GameCoordinator", "StartMainGame", {1})
+				msg.post("#CharSelectActions", "DeleteCharSelect")
+			elseif gui.pick_node(SelectAlex, x, y) then
+				msg.post("main:/MainMenu#GameCoordinator", "StartMainGame", {2})
+				msg.post("#CharSelectActions", "DeleteCharSelect")
+			elseif gui.pick_node(SelectMill, x, y) then
+				msg.post("main:/MainMenu#GameCoordinator", "StartMainGame", {3})
+				msg.post("#CharSelectActions", "DeleteCharSelect")
+			end
+		end
+
+	end
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end

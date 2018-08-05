@@ -1,6 +1,6 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	
+
 	AngerTotal=0
 	AngerVelocity=1000
 	Price = 15000
@@ -12,7 +12,34 @@ function init(self)
 	Score = 0
 	ScoreTicker = 0
 	ScoreThreshold = 0
+
+
+	--perks
+	PerkTextStr=""
+	PerkTextStatus=false
+	PerkTextCounter=0
+	PerkTextFrameCounter=0
 	
+	DansLuck=false
+	DansLuckFrameCounter = 0
+
+	AlexPerk=false
+
+	JeffPerk=false
+	JeffPerkStatus=true
+	JeffPerkChoice=0
+	JeffAdLines = {
+		"Buy Super Delicious Soda!!!",
+		"BattleFront 3 Coming Out Soon!",
+		"'Hyper-Speed Energy Drink' has got your daily energy needs covered!",
+		"Get your hands on an Ultra-Ultra Wide Monitor with a 50/3 aspect ratio!",
+		"Can't Build a Website? Here at Round-Area we can make one for you!"
+	}
+	
+	JeffPerkClick=0
+	JeffPerkDelayCounter=0
+
+	SkinName= "Darth Vader"
 	
 	BarInvestor = gui.get_node("BarInvestor")
 	BarPublic = gui.get_node("BarPublic")
@@ -20,8 +47,9 @@ function init(self)
 	DecreaseButton = gui.get_node("BtnDecreasePriceNode")
 	SkinPrice = gui.get_node("SkinPrice")
 	ScoreNode = gui.get_node("Score")
+	PerkText = gui.get_node("PerkText")
 	
-	gui.set_text(SkinPrice, "Darth Vader Skin Price:\n" .. Price .. " Credits")
+	gui.set_text(SkinPrice, SkinName.." Skin Price:\n" .. Price .. " Credits")
 	gui.set_text(ScoreNode, "Severance Package\n$" .. Score)
 end
 
@@ -98,50 +126,176 @@ function update(self, dt)
 	end
 
 	if OverShootFrames > 120 then
+		local RandomRoll = math.random(0, 100)
+		if DansLuck and (RandomRoll > 70) or (PerkTextCounter == -1) then
+			AngerTotal=0
+			AngerVelocity=1000
+			OverShootFrames=0
 	
-		--TODO:
-		local FactoryName= "#ScoreScreenFactory"
-		local ScoreScreen = factory.create(FactoryName)
-		--print (msg.url(ScoreScreen).."#ScoreScreen")
-		msg.post(msg.url(ScoreScreen), "UpdateScoreScreen", {Score=Score})
-		msg.post("#MainGameActions", "DeleteMainGame")
-		
+			if (PerkTextCounter == -1) then
+				PerkTextStr = "Beginner's Luck: First Reset Free"
+			else
+				PerkTextStr = "Dan's Luck: Rolled: "..tostring(RandomRoll).."/100"
+			end
+			PerkTextStatus=true
+			gui.set_text(PerkText, "")
+			PerkTextFrameCounter = 0
+			PerkTextCounter=0
+			
+		else
+			local FactoryName= "#ScoreScreenFactory"
+			local ScoreScreen = factory.create(FactoryName)
+			--print (msg.url(ScoreScreen).."#ScoreScreen")
+			msg.post(msg.url(ScoreScreen), "UpdateScoreScreen", {Score=Score})
+			msg.post("#MainGameActions", "DeleteMainGame")
+		end
 	end
 
+	--JeffPerk
+	if JeffPerkClick ~= 0 then
+		JeffPerkDelayCounter = JeffPerkDelayCounter + 1
+		if JeffPerkDelayCounter == 20 then
+			if math.random(0, 100) > 85 then
+				PerkTextStr = JeffAdLines[math.random(1, table.maxn(JeffAdLines))]
+				PerkTextStatus=true
+				gui.set_text(PerkText, "")
+				PerkTextFrameCounter = 0
+				PerkTextCounter=0
+			end
+			if JeffPerkClick == 1 then
+				gui.play_flipbook(IncreaseButton, "Pressed")
+			else
+				gui.play_flipbook(DecreaseButton, "Pressed")
+			end
+		elseif JeffPerkDelayCounter == 30 then
+			gui.play_flipbook(IncreaseButton, "Base")
+			gui.play_flipbook(DecreaseButton, "Base")
+			if JeffPerkClick == 1 then
+				AngerVelocity = AngerVelocity + 500
+				Price = Price + 500
+			else
+				AngerVelocity = AngerVelocity - 500
+				Price = Price - 500
+			end
+			gui.set_text(SkinPrice, SkinName.." Skin Price:\n" .. Price .. " Credits")
+			JeffPerkDelayCounter=0
+			JeffPerkClick=0
+		end
+	end
+	
+	if JeffPerk and JeffPerkStatus then
+		if JeffPerkDelayCounter ~= 0 then
+			if JeffPerkChoice == 1 then
+				PerkTextStr = "Woah There! Too Many Inputs for Network. (Ate Input Inc. Price)"
+			elseif JeffPerkChoice == 2 then
+				PerkTextStr = "Woah There! Too Many Inputs for Network. (Ate Input Dec. Price)"
+			end
+			PerkTextStatus=true
+			gui.set_text(PerkText, "")
+			PerkTextFrameCounter = 0
+			PerkTextCounter=0
+		else
+			JeffPerkClick = JeffPerkChoice
+		end
+		JeffPerkStatus=false
+	end
+
+
+	
+	--PerkText
+	if PerkTextStatus then
+		if PerkTextCounter <= string.len(PerkTextStr) then
+			PerkTextCounter = PerkTextCounter + 1
+			gui.set_text(PerkText, string.sub(PerkTextStr, 0, PerkTextCounter))
+		else
+			PerkTextCounter = PerkTextCounter + 1
+		end
+		if PerkTextCounter > 240 then
+			gui.set_text(PerkText, "")
+			PerkTextCounter = 0
+			PerkTextCounter=0
+			PerkTextStatus=false
+		end
+	end
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	if message_id == hash("GameSettings") then
+		if message[1] == 0 then
+			JeffPerk=true
+		elseif message[1] == 1 then
+			DansLuck = true
+			PerkTextCounter = -1
+		elseif message[1] == 2 then 
+			AlexPerk = true
+		elseif message[1] == 3 then
+			SkinName = "General Gervais"
+			gui.set_text(SkinPrice, SkinName.." Skin Price:\n" .. Price .. " Credits")
+		end
+	end
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("mouse_left_click") then
 		-- Get the nodes and see if we have pressed any.
-		local x = action.x
-		local y = action.y
+		if JeffPerk then
+			local x = action.x
+			local y = action.y
+			if action.pressed then
+				if gui.pick_node(IncreaseButton, x, y) then
+					JeffPerkChoice = 1
+					JeffPerkStatus = true
+				elseif gui.pick_node(DecreaseButton, x, y) then
+					JeffPerkChoice = 2
+					JeffPerkStatus = true
+				end
+			end
+		else
+			local x = action.x
+			local y = action.y
+			if action.pressed then
+				if gui.pick_node(IncreaseButton, x, y) then
+					gui.play_flipbook(IncreaseButton, "Pressed")
+				elseif gui.pick_node(DecreaseButton, x, y) then
+					gui.play_flipbook(DecreaseButton, "Pressed")
+				end
+			end
+			if action.released then
+				gui.play_flipbook(IncreaseButton, "Base")
+				gui.play_flipbook(DecreaseButton, "Base")
+				if gui.pick_node(IncreaseButton, x, y) then
+					AngerVelocity = AngerVelocity + 500
+					Price = Price + 500
+				elseif gui.pick_node(DecreaseButton, x, y) then
+					AngerVelocity = AngerVelocity - 500
+					Price = Price - 500
+				end
+				gui.set_text(SkinPrice, SkinName.." Skin Price:\n" .. Price .. " Credits")
+			end
+		end
+	end
+
+	if AlexPerk then
 		if action.pressed then
-			if gui.pick_node(IncreaseButton, x, y) then
+			if action_id == hash("d_key") then
 				gui.play_flipbook(IncreaseButton, "Pressed")
-			elseif gui.pick_node(DecreaseButton, x, y) then
+			elseif action_id == hash("a_key") then
 				gui.play_flipbook(DecreaseButton, "Pressed")
 			end
 		end
 		if action.released then
 			gui.play_flipbook(IncreaseButton, "Base")
 			gui.play_flipbook(DecreaseButton, "Base")
-			if gui.pick_node(IncreaseButton, x, y) then
-				AngerVelocity = AngerVelocity + 500
-				Price = Price + 500
-			elseif gui.pick_node(DecreaseButton, x, y) then
+			if action_id == hash("a_key") then
 				AngerVelocity = AngerVelocity - 500
 				Price = Price - 500
+			elseif action_id == hash("d_key") then
+				AngerVelocity = AngerVelocity + 500
+				Price = Price + 500
 			end
-			gui.set_text(SkinPrice, "Darth Vader Skin Price:\n" .. Price .. " Credits")
+			gui.set_text(SkinPrice, SkinName.." Skin Price:\n" .. Price .. " Credits")
 		end
-		
 	end
-	
 end
 
 function on_reload(self)
