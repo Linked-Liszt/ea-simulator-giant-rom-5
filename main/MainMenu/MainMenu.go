@@ -28,6 +28,21 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "GameMusic"
+  component: "/Graphics/Sound/Music.sound"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "MainGameFactory"
   type: "factory"
@@ -68,6 +83,24 @@ embedded_components {
   id: "CharSelectFactory"
   type: "factory"
   data: "prototype: \"/main/CharSelect/CharSelect.go\"\n"
+  "load_dynamically: true\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "CreditFactory"
+  type: "factory"
+  data: "prototype: \"/main/Credits/Credits.go\"\n"
   "load_dynamically: true\n"
   ""
   position {

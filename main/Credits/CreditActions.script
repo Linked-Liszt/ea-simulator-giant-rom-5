@@ -1,0 +1,23 @@
+function init(self)
+	msg.post("main:/MainMenu#MainMenu", "DisableButtons")
+end
+
+function final(self)
+	msg.post("main:/MainMenu#MainMenu", "EnableButtons")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("DeleteCredits") then
+		go.delete()
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
