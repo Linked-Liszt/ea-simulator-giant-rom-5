@@ -1,13 +1,9 @@
-# Welcome to Defold
+# EA Simulator
 
-This project was created from the "empty" project template.
+* Built for the Giant Rom 5 Game Jam (https://itch.io/jam/giantrom5)
 
-The settings in ["game.project"](defold://open?path=/game.project) are all the default. A bootstrap empty ["main.collection"](defold://open?path=/main/main.collection) is included.
+* Created using the Defold IDE and engine
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
+* Music credits are in the game
 
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
-
-Happy Defolding!
-
----
+* Play online here: https://itch.io/jam/giantrom5/rate/287774
