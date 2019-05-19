@@ -6,4 +6,4 @@
 
 * Music credits are in the game
 
-* Play online here: https://itch.io/jam/giantrom5/rate/287774
+* Play online here: https://oxymoren.itch.io/ea-simulator
